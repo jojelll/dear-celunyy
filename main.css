@@ -30,18 +30,46 @@ body {
   filter: blur(0.1vmin);
   background-image: radial-gradient(ellipse at top, transparent 0%, var(--dark-color)), radial-gradient(ellipse at bottom, var(--dark-color), rgba(145, 233, 255, 0.2)), repeating-linear-gradient(220deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), repeating-linear-gradient(189deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), repeating-linear-gradient(148deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), linear-gradient(90deg, rgb(7, 107, 42), rgb(240, 240, 240));
 }
-
+/* ===== Tambahan untuk #typewriter-text agar terlihat dan muncul di atas bunga ===== */
+#typewriter-text {
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ffe4f3;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 10px;
+  text-shadow: 0 0 10px #ff69b4;
+  white-space: pre-line;
+  z-index: 999;
+}
+/* ===== Tambahan agar bunga berada di tengah ===== */
 .flowers {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 3rem;
   position: relative;
-  transform: scale(0.9);
+  z-index: 10;
 }
 
+/* ===== Perbaikan posisi bunga agar tidak geser ===== */
 .flower {
-  position: absolute;
-  bottom: 10vmin;
+  position: relative;
+  width: 100px;
+  height: auto;
+  margin: 0;
   transform-origin: bottom center;
-  z-index: 10;
-  --fl-speed: 0.3s;
+  z-index: 5;
 }
 .flower--1 {
   -webkit-animation: moving-flower-1 4s linear infinite;
