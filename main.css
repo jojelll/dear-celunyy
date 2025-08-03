@@ -47,30 +47,17 @@ body {
   white-space: pre-line;
   z-index: 999;
 }
-/* ===== Tambahan agar bunga berada di tengah ===== */
-.flowers {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 2rem;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-bottom: 3rem;
-  position: relative;
-  z-index: 10;
-}
 
-/* ===== Perbaikan posisi bunga agar tidak geser ===== */
 .flower {
   position: relative;
   width: 100px;
-  height: auto;
+  height: 180px; /* boleh tetap pakai ini */
   margin: 0;
   transform-origin: bottom center;
+  transform-style: preserve-3d;
   z-index: 5;
 }
+
 .flower--1 {
   -webkit-animation: moving-flower-1 4s linear infinite;
           animation: moving-flower-1 4s linear infinite;
@@ -1351,9 +1338,11 @@ body {
 #typewriter-text {
   position: fixed;
   top: 20px;
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
   text-align: center;
-  font-size: 1em; /* Ukuran teks diperkecil */
+  font-size: 1.2rem;
   line-height: 1.4;
   padding: 10px 20px;
   color: #ffe4f3;
