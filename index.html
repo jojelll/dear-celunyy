@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Celuny</title>
-    <link rel="stylesheet" href="main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Celuny</title>
+  <link rel="stylesheet" href="main.css">
 </head>
 <body class="container">
-    <div class="night"></div>
-    <div class="flowers">
-      <div class="flower flower--1">
+  <div class="night"></div>
+
+  <!-- BUNGA DAN RUMPUT -->
+  <div class="flowers">
+
+    <!-- Bunga 1 -->
+    <div class="flower flower--1">
+      <div class="flower__inner">
         <div class="flower__leafs flower__leafs--1">
           <div class="flower__leaf flower__leaf--1"></div>
           <div class="flower__leaf flower__leaf--2"></div>
           <div class="flower__leaf flower__leaf--3"></div>
           <div class="flower__leaf flower__leaf--4"></div>
           <div class="flower__white-circle"></div>
-  
           <div class="flower__light flower__light--1"></div>
           <div class="flower__light flower__light--2"></div>
           <div class="flower__light flower__light--3"></div>
@@ -25,7 +29,6 @@
           <div class="flower__light flower__light--6"></div>
           <div class="flower__light flower__light--7"></div>
           <div class="flower__light flower__light--8"></div>
-  
         </div>
         <div class="flower__line">
           <div class="flower__line__leaf flower__line__leaf--1"></div>
@@ -36,15 +39,17 @@
           <div class="flower__line__leaf flower__line__leaf--6"></div>
         </div>
       </div>
-  
-      <div class="flower flower--2">
+    </div>
+
+    <!-- Bunga 2 -->
+    <div class="flower flower--2">
+      <div class="flower__inner">
         <div class="flower__leafs flower__leafs--2">
           <div class="flower__leaf flower__leaf--1"></div>
           <div class="flower__leaf flower__leaf--2"></div>
           <div class="flower__leaf flower__leaf--3"></div>
           <div class="flower__leaf flower__leaf--4"></div>
           <div class="flower__white-circle"></div>
-  
           <div class="flower__light flower__light--1"></div>
           <div class="flower__light flower__light--2"></div>
           <div class="flower__light flower__light--3"></div>
@@ -53,7 +58,6 @@
           <div class="flower__light flower__light--6"></div>
           <div class="flower__light flower__light--7"></div>
           <div class="flower__light flower__light--8"></div>
-  
         </div>
         <div class="flower__line">
           <div class="flower__line__leaf flower__line__leaf--1"></div>
@@ -62,15 +66,17 @@
           <div class="flower__line__leaf flower__line__leaf--4"></div>
         </div>
       </div>
-  
-      <div class="flower flower--3">
+    </div>
+
+    <!-- Bunga 3 -->
+    <div class="flower flower--3">
+      <div class="flower__inner">
         <div class="flower__leafs flower__leafs--3">
           <div class="flower__leaf flower__leaf--1"></div>
           <div class="flower__leaf flower__leaf--2"></div>
           <div class="flower__leaf flower__leaf--3"></div>
           <div class="flower__leaf flower__leaf--4"></div>
           <div class="flower__white-circle"></div>
-  
           <div class="flower__light flower__light--1"></div>
           <div class="flower__light flower__light--2"></div>
           <div class="flower__light flower__light--3"></div>
@@ -79,7 +85,6 @@
           <div class="flower__light flower__light--6"></div>
           <div class="flower__light flower__light--7"></div>
           <div class="flower__light flower__light--8"></div>
-  
         </div>
         <div class="flower__line">
           <div class="flower__line__leaf flower__line__leaf--1"></div>
@@ -88,7 +93,10 @@
           <div class="flower__line__leaf flower__line__leaf--4"></div>
         </div>
       </div>
-  
+    </div>
+
+    
+
       <div class="grow-ans" style="--d:1.2s">
         <div class="flower__g-long">
           <div class="flower__g-long__top"></div>
@@ -305,6 +313,35 @@
       </div>
     <div id="typewriter-text"></div>
     <audio id="music" src="happybirthday.mp3" autoplay muted></audio>
-    <script src="main.js"></script>
-  </body>
+      <!-- Script -->
+  <script>
+    const text = `Happy Birthday, dear Celuny,  
+a beacon in my life's grand sea.  
+You mean so much, truly, profoundly,  
+my precious friend, for all to see.
+
+And beyond the bond of friendship's grace,  
+you shine so bright, in every space.  
+My precious girl, with heart so pure,  
+a gentle soul, of whom I'm sure`;
+
+    const el = document.getElementById("typewriter-text");
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        el.innerHTML += text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
+        i++;
+        setTimeout(type, 45);
+      }
+    }
+    type();
+
+    // Unmute musik setelah user klik
+    window.addEventListener('click', () => {
+      const music = document.getElementById("music");
+      music.muted = false;
+      music.play();
+    }, { once: true });
+  </script>
+</body>
 </html>
