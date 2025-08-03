@@ -1334,3 +1334,19 @@ body {
   text-shadow: 0 0 8px #ff69b4;
   z-index: 100;
 }
+@keyframes moving-flower-1 {
+  0%, 100% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+}
+@keyframes blooming-leaf-right {
+  0% { transform: rotate(70deg) scale(0); }
+}
+@keyframes blooming-leaf-left {
+  0% { transform: rotate(-70deg) scale(0); }
+}
+@keyframes grow-flower-tree {
+  0% { height: 0; }
+}
+@keyframes blooming-flower {
+  0% { transform: scale(0); }
+}
