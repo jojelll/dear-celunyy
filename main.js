@@ -1,5 +1,13 @@
-window.onload = () => {
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("typewriter-text");
+  const audio     = document.getElementById("music");
+  if (!container) {
+    console.error("Typewriter container not found");
+    return;
+  }
+  // Remove the container class (if it exists) and clear any text
   document.body.classList.remove("container");
+  container.innerHTML = "";
 
   const text = `Happy Birthday, dear Celuny,  
 a beacon in my life's grand sea.  
@@ -18,47 +26,48 @@ each rising sun, a brighter day.
 
 Happy Birthday sweet Celuny,  
 may life’s best gifts now come to thee.`;
+
   let i = 0;
-  const speed = 50;
-  const container = document.getElementById("typewriter-text");
-  const totalChars = text.length;
-  const audio = document.getElementById("music");
+  const total = text.length;
+  const baseSpeed = 50;
 
   function typeWriter() {
-    if (i < totalChars) {
-      container.textContent += text.charAt(i);
+    if (i < total) {
+      // Use innerHTML if you ever want <br> on "\n"
+      const char = text.charAt(i);
+      container.innerHTML += (char === "\n" ? "<br>" : char);
       i++;
-      const progress = i / totalChars;
-      const delay = speed * (1 - progress * 0.5);
+      // Slow down slightly toward the end
+      const progress = i / total;
+      const delay    = baseSpeed * (1 - 0.5 * progress);
       setTimeout(typeWriter, delay);
     }
   }
   typeWriter();
 
-  audio.volume = 0.5;
-  audio.play().catch((error) => {
-    console.error("Audio playback failed:", error);
-    const playButton = document.createElement("button");
-    playButton.textContent = "Play Audio";
-    playButton.style.position = "absolute";
-    playButton.style.top = "20px";
-    playButton.style.left = "50%";
-    playButton.style.transform = "translateX(-50%)";
-    playButton.style.padding = "12px 24px";
-    playButton.style.fontSize = "1.2rem";
-    playButton.style.background = "linear-gradient(45deg, #ff7eb3, #ff758c)";
-    playButton.style.border = "none";
-    playButton.style.borderRadius = "30px";
-    playButton.style.color = "white";
-    playButton.style.cursor = "pointer";
-    playButton.style.boxShadow = "0 0 10px rgba(255, 255, 255, 0.5)";
-    playButton.style.zIndex = "999";
-    playButton.innerHTML = "🎵 Play Music";
-    playButton.addEventListener("click", () => {
-      audio.muted = false;
-      audio.play().catch((error) => console.error("Audio playback failed on click:", error));
-      playButton.remove();
+  // Audio fallback button
+  if (audio) {
+    audio.volume = 0.5;
+    audio.play().catch(err => {
+      console.warn("Auto-play failed, offering play button:", err);
+      const btn = document.createElement("button");
+      Object.assign(btn.style, {
+        position: "fixed",
+        top: "20px", left: "50%", transform: "translateX(-50%)",
+        padding: "12px 24px", fontSize: "1.2rem",
+        background: "linear-gradient(45deg, #ff7eb3, #ff758c)",
+        border: "none", borderRadius: "30px",
+        color: "white", cursor: "pointer",
+        boxShadow: "0 0 10px rgba(255,255,255,0.5)",
+        zIndex: "1000",
+      });
+      btn.textContent = "🎵 Play Music";
+      btn.addEventListener("click", () => {
+        audio.muted = false;
+        audio.play().catch(e => console.error("Play on click failed:", e));
+        btn.remove();
+      }, { once: true });
+      document.body.appendChild(btn);
     });
-    document.body.appendChild(playButton);
-  });
-};
+  }
+});
