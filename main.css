@@ -1,16 +1,13 @@
-/* ===== Root Variables ===== */
 :root {
   --dark-color: #010101;
   --white: #ffffff;
   --leaf-green: #4caf50;
   --light-green: #8bc34a;
-  --flower-red: #f44336;
   --flower-pink: #e91e63;
   --stem: #2e7d32;
   --grass: #388e3c;
 }
 
-/* ===== Body and Layout ===== */
 body {
   display: flex;
   flex-direction: column;
@@ -25,7 +22,6 @@ body {
   text-align: center;
 }
 
-/* ===== Night Background ===== */
 .night {
   position: fixed;
   left: 50%;
@@ -37,14 +33,13 @@ body {
   background-image:
     radial-gradient(ellipse at top, transparent 0%, var(--dark-color)),
     radial-gradient(ellipse at bottom, var(--dark-color), rgba(145, 233, 255, 0.2)),
-    repeating-linear-gradient(220deg, rgb(0,0,0) 0px, rgb(0,0,0) 19px, transparent 19px, transparent 22px),
-    repeating-linear-gradient(189deg, rgb(0,0,0) 0px, rgb(0,0,0) 19px, transparent 19px, transparent 22px),
-    repeating-linear-gradient(148deg, rgb(0,0,0) 0px, rgb(0,0,0) 19px, transparent 19px, transparent 22px),
+    repeating-linear-gradient(220deg, #000 0px, #000 19px, transparent 19px, transparent 22px),
+    repeating-linear-gradient(189deg, #000 0px, #000 19px, transparent 19px, transparent 22px),
+    repeating-linear-gradient(148deg, #000 0px, #000 19px, transparent 19px, transparent 22px),
     linear-gradient(90deg, rgb(7, 107, 42), rgb(240, 240, 240));
   z-index: -1;
 }
 
-/* ===== Typewriter Text ===== */
 #typewriter-text {
   position: fixed;
   top: 5vh;
@@ -59,13 +54,12 @@ body {
   text-align: center;
 }
 
-/* ===== Flowers Container ===== */
 .flowers {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 2rem;
   flex-wrap: wrap;
+  gap: 2rem;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -73,14 +67,10 @@ body {
   z-index: 10;
 }
 
-/* ===== Individual Flower ===== */
 .flower {
   position: relative;
-  width: 100px;
+  width: 120px;
   height: 180px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .flower__inner {
@@ -89,10 +79,12 @@ body {
   height: 100%;
 }
 
-/* ===== Flower Petals ===== */
 .flower__leafs {
-  position: relative;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
   height: 100px;
 }
 
@@ -103,26 +95,26 @@ body {
   border-radius: 50% 50% 0 0;
   position: absolute;
   top: 0;
-  left: calc(50% - 15px);
+  left: 50%;
   transform-origin: bottom center;
-  animation: bloom 1s ease forwards;
 }
-.flower__leaf--1 { transform: rotate(0deg); }
-.flower__leaf--2 { transform: rotate(45deg); }
-.flower__leaf--3 { transform: rotate(90deg); }
-.flower__leaf--4 { transform: rotate(135deg); }
+
+.flower__leaf--1 { transform: translateX(-50%) rotate(0deg); }
+.flower__leaf--2 { transform: translateX(-50%) rotate(45deg); }
+.flower__leaf--3 { transform: translateX(-50%) rotate(90deg); }
+.flower__leaf--4 { transform: translateX(-50%) rotate(135deg); }
 
 .flower__white-circle {
   width: 20px;
   height: 20px;
-  background: var(--white);
+  background: white;
   border-radius: 50%;
   position: absolute;
   top: 40px;
-  left: calc(50% - 10px);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-/* ===== Flower Lights ===== */
 .flower__light {
   position: absolute;
   width: 4px;
@@ -133,13 +125,14 @@ body {
   animation: blink 2s infinite ease-in-out;
 }
 
-/* ===== Stem ===== */
 .flower__line {
-  position: relative;
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 2px;
   height: 80px;
   background: var(--stem);
-  margin-top: 10px;
 }
 
 .flower__line__leaf {
@@ -150,7 +143,6 @@ body {
   position: absolute;
 }
 
-/* ===== Grass ===== */
 .flower__grass {
   position: relative;
   width: 80px;
@@ -176,38 +168,7 @@ body {
   pointer-events: none;
 }
 
-/* ===== Animations ===== */
-@keyframes bloom {
-  from { transform: scale(0.5); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
 @keyframes blink {
   0%,100% { opacity: 0.6; }
   50% { opacity: 1; }
-}
-
-/* ===== Growth Animations (Optional) ===== */
-.grow-ans {
-  animation: grow 1s ease-out forwards;
-  opacity: 0;
-  animation-delay: var(--d);
-}
-
-@keyframes grow {
-  to { opacity: 1; }
-}
-
-.long-g, .flower__g-right, .flower__g-front, .flower__g-fr, .flower__g-long {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
-}
-
-.leaf {
-  width: 10px;
-  height: 20px;
-  background: var(--leaf-green);
-  border-radius: 50% 50% 0 0;
 }
