@@ -39,7 +39,7 @@ may life’s best gifts now come to thee.`;
   audio.play().catch((error) => {
     console.error("Audio playback failed:", error);
     const playButton = document.createElement("button");
-    playButton.textContent = "Click to Play Audio";
+    playButton.textContent = "Play Audio";
     playButton.style.position = "absolute";
     playButton.style.top = "20px";
     playButton.style.left = "50%";
