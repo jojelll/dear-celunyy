@@ -1319,3 +1319,35 @@ body {
   -webkit-animation-play-state: paused !important;
           animation-play-state: paused !important;
 }
+#typewriter-text {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Georgia', serif;
+  font-size: 0.7rem;
+  color: #ffe4f3;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  padding: 10px;
+  text-shadow: 0 0 8px #ff69b4;
+  z-index: 100;
+}
+
+@keyframes moving-flower-1 {
+  0%, 100% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+}
+@keyframes blooming-leaf-right {
+  0% { transform: rotate(70deg) scale(0); }
+}
+@keyframes blooming-leaf-left {
+  0% { transform: rotate(-70deg) scale(0); }
+}
+@keyframes grow-flower-tree {
+  0% { height: 0; }
+}
+@keyframes blooming-flower {
+  0% { transform: scale(0); }
+}
