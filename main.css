@@ -1315,9 +1315,6 @@ body {
     transform: scale(0);
   }
 }
-.container * {
-  -webkit-animation-play-state: paused !important;
-          animation-play-state: paused !important;
 }
 #typewriter-text {
   position: absolute;
@@ -1328,11 +1325,12 @@ body {
   font-size: 0.7rem;
   color: #ffe4f3;
   text-align: center;
+  white-space: pre-line;
   width: 90%;
   max-width: 500px;
   padding: 10px;
-  text-shadow: 0 0 8px #ff69b4;
-  z-index: 100;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  z-index: 1000;
 }
 @keyframes moving-flower-1 {
   0%, 100% { transform: rotate(2deg); }
